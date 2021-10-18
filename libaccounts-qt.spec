@@ -4,15 +4,15 @@
 #
 Name     : libaccounts-qt
 Version  : ersion.1.16
-Release  : 1
+Release  : 2
 URL      : https://gitlab.com/accounts-sso/libaccounts-qt/-/archive/VERSION_1.16/libaccounts-qt-VERSION_1.16.tar.gz
 Source0  : https://gitlab.com/accounts-sso/libaccounts-qt/-/archive/VERSION_1.16/libaccounts-qt-VERSION_1.16.tar.gz
 Summary  : Accounts Library
 Group    : Development/Tools
 License  : LGPL-2.1
 Requires: libaccounts-qt-bin = %{version}-%{release}
+Requires: libaccounts-qt-lib = %{version}-%{release}
 Requires: libaccounts-qt-license = %{version}-%{release}
-Requires: libaccounts-qt-plugins = %{version}-%{release}
 BuildRequires : buildreq-qmake
 BuildRequires : doxygen
 BuildRequires : glib-dev
@@ -40,6 +40,7 @@ bin components for the libaccounts-qt package.
 %package dev
 Summary: dev components for the libaccounts-qt package.
 Group: Development
+Requires: libaccounts-qt-lib = %{version}-%{release}
 Requires: libaccounts-qt-bin = %{version}-%{release}
 Provides: libaccounts-qt-devel = %{version}-%{release}
 Requires: libaccounts-qt = %{version}-%{release}
@@ -56,20 +57,21 @@ Group: Documentation
 doc components for the libaccounts-qt package.
 
 
+%package lib
+Summary: lib components for the libaccounts-qt package.
+Group: Libraries
+Requires: libaccounts-qt-license = %{version}-%{release}
+
+%description lib
+lib components for the libaccounts-qt package.
+
+
 %package license
 Summary: license components for the libaccounts-qt package.
 Group: Default
 
 %description license
 license components for the libaccounts-qt package.
-
-
-%package plugins
-Summary: plugins components for the libaccounts-qt package.
-Group: Default
-
-%description plugins
-plugins components for the libaccounts-qt package.
 
 
 %prep
@@ -87,11 +89,14 @@ test -r config.log && cat config.log
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1634568843
+export SOURCE_DATE_EPOCH=1634570246
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libaccounts-qt
 cp %{_builddir}/libaccounts-qt-VERSION_1.16/COPYING %{buildroot}/usr/share/package-licenses/libaccounts-qt/4df5d4b947cf4e63e675729dd3f168ba844483c7
 %make_install
+## install_append content
+mv %{buildroot}/usr/lib/*.so* %{buildroot}/usr/lib64/
+## install_append end
 
 %files
 %defattr(-,root,root,-)
@@ -125,7 +130,7 @@ cp %{_builddir}/libaccounts-qt-VERSION_1.16/COPYING %{buildroot}/usr/share/packa
 /usr/include/accounts-qt5/Accounts/utils.h
 /usr/lib/cmake/AccountsQt5/AccountsQt5Config.cmake
 /usr/lib/cmake/AccountsQt5/AccountsQt5ConfigVersion.cmake
-/usr/lib/libaccounts-qt5.so
+/usr/lib64/libaccounts-qt5.so
 /usr/lib64/pkgconfig/accounts-qt5.pc
 
 %files doc
@@ -226,12 +231,12 @@ cp %{_builddir}/libaccounts-qt-VERSION_1.16/COPYING %{buildroot}/usr/share/packa
 /usr/share/doc/accounts-qt/html/utils_8h_source.html
 /usr/share/doc/accounts-qt/qch/accounts.qch
 
+%files lib
+%defattr(-,root,root,-)
+/usr/lib64/libaccounts-qt5.so.1
+/usr/lib64/libaccounts-qt5.so.1.4
+/usr/lib64/libaccounts-qt5.so.1.4.0
+
 %files license
 %defattr(0644,root,root,0755)
 /usr/share/package-licenses/libaccounts-qt/4df5d4b947cf4e63e675729dd3f168ba844483c7
-
-%files plugins
-%defattr(-,root,root,-)
-/usr/lib/libaccounts-qt5.so.1
-/usr/lib/libaccounts-qt5.so.1.4
-/usr/lib/libaccounts-qt5.so.1.4.0
