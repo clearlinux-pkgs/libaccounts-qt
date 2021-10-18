@@ -4,7 +4,7 @@
 #
 Name     : libaccounts-qt
 Version  : ersion.1.16
-Release  : 2
+Release  : 3
 URL      : https://gitlab.com/accounts-sso/libaccounts-qt/-/archive/VERSION_1.16/libaccounts-qt-VERSION_1.16.tar.gz
 Source0  : https://gitlab.com/accounts-sso/libaccounts-qt/-/archive/VERSION_1.16/libaccounts-qt-VERSION_1.16.tar.gz
 Summary  : Accounts Library
@@ -23,6 +23,7 @@ BuildRequires : pkgconfig(Qt5Core)
 BuildRequires : pkgconfig(Qt5Gui)
 BuildRequires : pkgconfig(Qt5Xml)
 BuildRequires : qttools-dev
+Patch1: libdir.patch
 
 %description
 Accounts management library for Qt applications
@@ -77,6 +78,7 @@ license components for the libaccounts-qt package.
 %prep
 %setup -q -n libaccounts-qt-VERSION_1.16
 cd %{_builddir}/libaccounts-qt-VERSION_1.16
+%patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
@@ -89,14 +91,11 @@ test -r config.log && cat config.log
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1634570246
+export SOURCE_DATE_EPOCH=1634571628
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libaccounts-qt
 cp %{_builddir}/libaccounts-qt-VERSION_1.16/COPYING %{buildroot}/usr/share/package-licenses/libaccounts-qt/4df5d4b947cf4e63e675729dd3f168ba844483c7
 %make_install
-## install_append content
-mv %{buildroot}/usr/lib/*.so* %{buildroot}/usr/lib64/
-## install_append end
 
 %files
 %defattr(-,root,root,-)
@@ -128,8 +127,8 @@ mv %{buildroot}/usr/lib/*.so* %{buildroot}/usr/lib64/
 /usr/include/accounts-qt5/Accounts/service-type.h
 /usr/include/accounts-qt5/Accounts/service.h
 /usr/include/accounts-qt5/Accounts/utils.h
-/usr/lib/cmake/AccountsQt5/AccountsQt5Config.cmake
-/usr/lib/cmake/AccountsQt5/AccountsQt5ConfigVersion.cmake
+/usr/lib64/cmake/AccountsQt5/AccountsQt5Config.cmake
+/usr/lib64/cmake/AccountsQt5/AccountsQt5ConfigVersion.cmake
 /usr/lib64/libaccounts-qt5.so
 /usr/lib64/pkgconfig/accounts-qt5.pc
 

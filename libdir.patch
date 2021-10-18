@@ -1,0 +1,11 @@
+--- libaccounts-qt-VERSION_1.16/common-project-config.pri~	2019-09-18 19:00:34.000000000 +0000
++++ libaccounts-qt-VERSION_1.16/common-project-config.pri	2021-10-18 15:38:47.197951619 +0000
+@@ -37,7 +37,7 @@
+     message("==== install prefix set to `$${INSTALL_PREFIX}'")
+ }
+ 
+-INSTALL_LIBDIR = $${INSTALL_PREFIX}/lib
++INSTALL_LIBDIR = $${INSTALL_PREFIX}/lib64
+ 
+ # default library directory can be overriden by defining LIBDIR when
+ # running qmake
