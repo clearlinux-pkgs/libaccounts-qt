@@ -4,7 +4,7 @@
 #
 Name     : libaccounts-qt
 Version  : 1.16
-Release  : 4
+Release  : 5
 URL      : https://gitlab.com/accounts-sso/libaccounts-qt/-/archive/VERSION_1.16/libaccounts-qt-VERSION_1.16.tar.gz
 Source0  : https://gitlab.com/accounts-sso/libaccounts-qt/-/archive/VERSION_1.16/libaccounts-qt-VERSION_1.16.tar.gz
 Summary  : Accounts Library
@@ -91,10 +91,10 @@ test -r config.log && cat config.log
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1649032371
+export SOURCE_DATE_EPOCH=1663010813
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libaccounts-qt
-cp %{_builddir}/libaccounts-qt-VERSION_1.16/COPYING %{buildroot}/usr/share/package-licenses/libaccounts-qt/4df5d4b947cf4e63e675729dd3f168ba844483c7
+cp %{_builddir}/libaccounts-qt-VERSION_%{version}/COPYING %{buildroot}/usr/share/package-licenses/libaccounts-qt/4df5d4b947cf4e63e675729dd3f168ba844483c7
 %make_install
 
 %files
@@ -146,6 +146,7 @@ cp %{_builddir}/libaccounts-qt-VERSION_1.16/COPYING %{buildroot}/usr/share/packa
 /usr/share/doc/accounts-qt/html/auth-data_8cpp_source.html
 /usr/share/doc/accounts-qt/html/auth-data_8h_source.html
 /usr/share/doc/accounts-qt/html/bc_s.png
+/usr/share/doc/accounts-qt/html/bc_sd.png
 /usr/share/doc/accounts-qt/html/bdwn.png
 /usr/share/doc/accounts-qt/html/classAccounts_1_1AccountService-members.html
 /usr/share/doc/accounts-qt/html/classAccounts_1_1AccountService.html
@@ -180,6 +181,7 @@ cp %{_builddir}/libaccounts-qt-VERSION_1.16/COPYING %{buildroot}/usr/share/packa
 /usr/share/doc/accounts-qt/html/dir_c3d1d086c816c0518443c9e800634b9c.js
 /usr/share/doc/accounts-qt/html/dir_e68e8157741866f444e17edd764ebbae.html
 /usr/share/doc/accounts-qt/html/doc.png
+/usr/share/doc/accounts-qt/html/docd.png
 /usr/share/doc/accounts-qt/html/doxygen.css
 /usr/share/doc/accounts-qt/html/doxygen.svg
 /usr/share/doc/accounts-qt/html/dynsections.js
@@ -204,8 +206,10 @@ cp %{_builddir}/libaccounts-qt-VERSION_1.16/COPYING %{buildroot}/usr/share/packa
 /usr/share/doc/accounts-qt/html/menu.js
 /usr/share/doc/accounts-qt/html/menudata.js
 /usr/share/doc/accounts-qt/html/nav_f.png
+/usr/share/doc/accounts-qt/html/nav_fd.png
 /usr/share/doc/accounts-qt/html/nav_g.png
 /usr/share/doc/accounts-qt/html/nav_h.png
+/usr/share/doc/accounts-qt/html/nav_hd.png
 /usr/share/doc/accounts-qt/html/navtree.css
 /usr/share/doc/accounts-qt/html/navtree.js
 /usr/share/doc/accounts-qt/html/navtreedata.js
@@ -220,12 +224,17 @@ cp %{_builddir}/libaccounts-qt-VERSION_1.16/COPYING %{buildroot}/usr/share/packa
 /usr/share/doc/accounts-qt/html/service_8cpp_source.html
 /usr/share/doc/accounts-qt/html/service_8h_source.html
 /usr/share/doc/accounts-qt/html/splitbar.png
+/usr/share/doc/accounts-qt/html/splitbard.png
 /usr/share/doc/accounts-qt/html/sync_off.png
 /usr/share/doc/accounts-qt/html/sync_on.png
 /usr/share/doc/accounts-qt/html/tab_a.png
+/usr/share/doc/accounts-qt/html/tab_ad.png
 /usr/share/doc/accounts-qt/html/tab_b.png
+/usr/share/doc/accounts-qt/html/tab_bd.png
 /usr/share/doc/accounts-qt/html/tab_h.png
+/usr/share/doc/accounts-qt/html/tab_hd.png
 /usr/share/doc/accounts-qt/html/tab_s.png
+/usr/share/doc/accounts-qt/html/tab_sd.png
 /usr/share/doc/accounts-qt/html/tabs.css
 /usr/share/doc/accounts-qt/html/utils_8cpp_source.html
 /usr/share/doc/accounts-qt/html/utils_8h_source.html
