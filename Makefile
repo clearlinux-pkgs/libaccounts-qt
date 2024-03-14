@@ -1,5 +1,5 @@
 PKG_NAME := libaccounts-qt
-URL = https://gitlab.com/accounts-sso/libaccounts-qt/-/archive/VERSION_1.16/libaccounts-qt-VERSION_1.16.tar.gz
+URL = https://gitlab.com/nicolasfella/libaccounts-qt/-/archive/qt6/libaccounts-qt-qt6.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
