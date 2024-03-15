@@ -7,7 +7,7 @@
 #
 Name     : libaccounts-qt
 Version  : qt6
-Release  : 8
+Release  : 9
 URL      : https://gitlab.com/nicolasfella/libaccounts-qt/-/archive/qt6/libaccounts-qt-qt6.tar.gz
 Source0  : https://gitlab.com/nicolasfella/libaccounts-qt/-/archive/qt6/libaccounts-qt-qt6.tar.gz
 Summary  : Accounts Library
@@ -87,6 +87,9 @@ cd %{_builddir}/libaccounts-qt-qt6
 %patch -P 1 -p1
 
 %build
+## build_prepend content
+PATH="/usr/lib64/qt6/bin:$PATH"
+## build_prepend end
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
@@ -130,7 +133,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1710521730
+export SOURCE_DATE_EPOCH=1710525028
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libaccounts-qt
 cp %{_builddir}/libaccounts-qt-%{version}/COPYING %{buildroot}/usr/share/package-licenses/libaccounts-qt/4df5d4b947cf4e63e675729dd3f168ba844483c7 || :
